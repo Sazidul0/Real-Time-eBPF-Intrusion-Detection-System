@@ -1,0 +1,41 @@
+# Professional-Grade IDS Rule Configuration
+rules:
+  - name: "Suspicious Execution From Temp"
+    description: "A process was executed from a temporary or world-writable directory."
+    enabled: true
+    event: "exec"
+    severity: "medium"
+    match:
+      # Use regex for flexible path matching
+      filename_regex: "^/(tmp|var/tmp|dev/shm)/.*"
+
+  - name: "Web Server Spawning Shell"
+    description: "A web server process spawned a shell, indicating a potential web shell."
+    enabled: true
+    event: "exec"
+    severity: "high"
+    match:
+      # These are regex patterns
+      parent_process_regex: "apache2|nginx|httpd|caddy"
+      child_process_regex: "sh|bash|zsh|dash|ksh"
+
+  - name: "Potential Data Exfiltration via Network"
+    description: "A process accessed a sensitive file and subsequently made an outbound network connection within a time window."
+    enabled: true
+    event: "connect" # This rule is triggered on the 'connect' event
+    severity: "high"
+    stateful:
+      # If a process opens a file matching this regex...
+      source_event_match:
+        event: "open"
+        filename_regex: "^/etc/(shadow|group|sudoers)|/root/.ssh/id_rsa$"
+      # ...and then this 'connect' event occurs within the time window, trigger the alert.
+      time_window_seconds: 300 # 5 minutes
+
+  - name: "Low-Severity: Package Manager Execution"
+    description: "Monitoring package manager activity."
+    enabled: true
+    event: "exec"
+    severity: "low"
+    match:
+      filename_regex: "^/usr/bin/(apt|dpkg|yum|dnf)$"

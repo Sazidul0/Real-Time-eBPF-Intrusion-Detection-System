@@ -1,0 +1,582 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 11,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "loki"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "drilldown": {
+          "links": [
+            {
+              "targetBlank": false,
+              "title": "Show high severity logs",
+              "url": "/d/${__dashboard.uid}/${__dashboard.slug}?orgId=${__org.id}&var-severity=high&refresh=now"
+            }
+          ]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green"
+            },
+            {
+              "color": "#E54658",
+              "value": 0
+            }
+          ]
+        },
+        "wideLayout": true
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "ceu9mtep7z8cgf"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "sum(count_over_time({job=\"ids_logs\", severity=\"high\"}[$__range]))",
+          "legendFormat": "High",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "High Severity",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "drilldown": {
+          "links": [
+            {
+              "targetBlank": false,
+              "title": "Show medium severity logs",
+              "url": "/d/${__dashboard.uid}/${__dashboard.slug}?orgId=${__org.id}&var-severity=medium&refresh=now"
+            }
+          ]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green"
+            },
+            {
+              "color": "#FF9830",
+              "value": 0
+            }
+          ]
+        },
+        "wideLayout": true
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "ceu9mtep7z8cgf"
+          },
+          "expr": "sum(count_over_time({job=\"ids_logs\", severity=\"medium\"}[$__range]))",
+          "legendFormat": "Medium",
+          "refId": "A"
+        }
+      ],
+      "title": "Medium Severity",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "drilldown": {
+          "links": [
+            {
+              "targetBlank": false,
+              "title": "Show low severity logs",
+              "url": "/d/${__dashboard.uid}/${__dashboard.slug}?orgId=${__org.id}&var-severity=low&refresh=now"
+            }
+          ]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green"
+            },
+            {
+              "color": "#37872D",
+              "value": 0
+            }
+          ]
+        },
+        "wideLayout": true
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "ceu9mtep7z8cgf"
+          },
+          "expr": "sum(count_over_time({job=\"ids_logs\", severity=\"low\"}[$__range]))",
+          "legendFormat": "Low",
+          "refId": "A"
+        }
+      ],
+      "title": "Low Severity",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "displayLabels": [
+          "name",
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "ceu9mtep7z8cgf"
+          },
+          "expr": "sum by (severity) (count_over_time({job=\"ids_logs\", severity!=\"\"}[$__range]))",
+          "legendFormat": "{{severity}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Severity Distribution",
+      "type": "piechart"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 5
+      },
+      "id": 16,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Time"
+          }
+        ]
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "ceu9mtep7z8cgf"
+          },
+          "expr": "{job=\"ids_logs\", severity=\"$selected_severity\"}",
+          "params": [
+            1000,
+            1000,
+            true
+          ],
+          "queryType": "instant",
+          "refId": "A"
+        }
+      ],
+      "title": "Alert Details",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "parser": "json",
+            "replace": false,
+            "source": "Line"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "includeByName": {
+              "Time": true,
+              "parent_process_name": true,
+              "process_name": true
+            },
+            "renameByName": {
+              "parent_process_name": "Parent Process Name",
+              "process_name": "Process Name"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "ceu9mtep7z8cgf"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 2,
+      "options": {
+        "dedupStrategy": "none",
+        "enableInfiniteScrolling": false,
+        "enableLogDetails": true,
+        "prettifyLogMessage": true,
+        "showCommonLabels": false,
+        "showLabels": true,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": true
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "ceu9mtep7z8cgf"
+          },
+          "editorMode": "code",
+          "expr": "{job=\"ids_logs\", rule_name=~\"$rule_name\", severity=~\"$severity\"} |~ \"$search_term\" | json",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Log Stream",
+      "type": "logs"
+    }
+  ],
+  "preload": false,
+  "refresh": "10s",
+  "schemaVersion": 41,
+  "tags": [
+    "ids",
+    "ebpf",
+    "security"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "ceu9mtep7z8cgf"
+        },
+        "definition": "label_values(severity)",
+        "description": "Filter alerts by their severity level.",
+        "includeAll": true,
+        "multi": true,
+        "name": "severity",
+        "options": [],
+        "query": "label_values(severity)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "ceu9mtep7z8cgf"
+        },
+        "definition": "label_values(rule_name)",
+        "description": "Filter alerts by the name of the triggered rule.",
+        "includeAll": true,
+        "multi": true,
+        "name": "rule_name",
+        "options": [],
+        "query": "label_values(rule_name)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "description": "Filter log contents with a free-text search.",
+        "label": "Search Term",
+        "name": "search_term",
+        "options": [
+          {
+            "selected": true,
+            "text": "",
+            "value": ""
+          }
+        ],
+        "query": "",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "high",
+          "value": "high"
+        },
+        "description": "Select a severity to view details.",
+        "includeAll": false,
+        "name": "selected_severity",
+        "options": [
+          {
+            "selected": true,
+            "text": "high",
+            "value": "high"
+          },
+          {
+            "selected": false,
+            "text": "medium",
+            "value": "medium"
+          },
+          {
+            "selected": false,
+            "text": "low",
+            "value": "low"
+          }
+        ],
+        "query": "high,medium,low",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "IDS Log Dashboard",
+  "uid": "bf529549-575e-4da3-a3ab-8af041008",
+  "version": 2
+}
