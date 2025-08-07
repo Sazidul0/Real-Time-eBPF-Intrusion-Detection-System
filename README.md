@@ -137,7 +137,7 @@ The Grafana dashboard (`IDS Log Dashboard.json`) provides:
 - **Severity Distribution**: A pie chart showing the proportion of alerts by severity.
 - **Alert Details**: A table with process names, parent processes, and timestamps.
 - **Log Stream**: A detailed view of logs with filtering by severity, rule name, and search terms.
-![UI](https://github.com/Sazidul0/Real-Time-eBPF-Intrusion-Detection-System.git)
+![GrafanaUI](https://github.com/Sazidul0/Real-Time-eBPF-Intrusion-Detection-System/blob/main/images/GrafanaUI.png)
 
 ## Example Alerts
 Sample alerts from `ids_alerts.log`:
