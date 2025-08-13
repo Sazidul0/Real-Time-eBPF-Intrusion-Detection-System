@@ -85,7 +85,8 @@ sudo -E python3 pro_ids_userspace.py --rules pro_rules.yaml --logfile ids_alerts
    ```
    - Select option `1` to start Grafana, Loki, and Promtail.
    - Select option `2` to stop them.
-   - Select option `3` to exit.
+   - Select option `3` to stop and remove Docker containers and the network.
+   - Select option `4` to exit.
 
 3. **Access Grafana**:
    - Open a browser and navigate to `http://localhost:3000`.
@@ -101,12 +102,6 @@ sudo -E python3 pro_ids_userspace.py --rules pro_rules.yaml --logfile ids_alerts
      - Upload `IDS Log Dashboard.json` or paste its contents.
      - The dashboard displays high/medium/low severity alerts, a severity distribution pie chart, and detailed logs.
 
-### Step 3: Clean Up
-To stop and remove Docker containers and the network:
-```bash
-chmod +x cleanUP.sh
-./cleanUP.sh
-```
 
 ## Rules Configuration
 The `pro_rules.yaml` file defines detection rules. Each rule specifies:
