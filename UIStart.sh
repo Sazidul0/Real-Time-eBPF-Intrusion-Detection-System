@@ -4,8 +4,9 @@ while true; do
     echo "Select an option:"
     echo "1) Start Grafana, Loki, and Promtail containers"
     echo "2) Stop Grafana, Loki, and Promtail containers"
-    echo "3) Exit"
-    read -p "Enter your choice (1-3): " choice
+    echo "3) Clean up containers and network"
+    echo "4) Exit"
+    read -p "Enter your choice (1-4): " choice
 
     case $choice in
         1)
@@ -23,11 +24,20 @@ while true; do
             echo "Containers stopped."
             ;;
         3)
+            echo "Stopping containers..."
+            docker stop grafana loki promtail &> /dev/null || true
+            echo "Removing containers..."
+            docker rm grafana loki promtail &> /dev/null || true
+            echo "Removing Docker network..."
+            docker network rm siem-net &> /dev/null || true
+            echo "Cleanup complete."
+            ;;
+        4)
             echo "Exiting..."
             exit 0
             ;;
         *)
-            echo "Invalid choice. Please select 1, 2, or 3."
+            echo "Invalid choice. Please select 1, 2, 3, or 4."
             ;;
     esac
 done
